@@ -45,7 +45,7 @@ if ingredients_list:
 # New section to display Fruityvice nutrition information
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 if fruityvice_response.status_code == 200:
-    #fruityvice_data = fruityvice_response.json()
-    #st.json(fruityvice_data)
+    fruityvice_data = fruityvice_response.json()
+    st.json(fruityvice_data)
 else:
     st.error(f"Failed to fetch data: {fruityvice_response.status_code}")
