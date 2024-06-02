@@ -54,8 +54,7 @@ if ingredients_list:
             st.error(f"Failed to fetch data for {fruit}: {response.status_code}")
 
     if fruityvice_data:
-        st.json(fruityvice_data)  # Display the JSON response for all selected fruits
-
+     
         # Display the data as a dataframe
         import pandas as pd
         fv_df = pd.json_normalize(fruityvice_data)
