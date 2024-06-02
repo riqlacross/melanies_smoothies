@@ -28,7 +28,7 @@ if len(ingredients_list) > 5:
     ingredients_list = ingredients_list[:5]  # Keep only the first 5 selections if more than 5 are chosen
 
 if ingredients_list:
-    ingredients_string = ' '.join(ingredients_list)
+    ingredients_string = ''.join(ingredients_list)
 
     st.write(ingredients_string)
 
