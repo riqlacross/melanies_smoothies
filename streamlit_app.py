@@ -42,20 +42,10 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success(f"{name_on_order}'s Smoothie is ordered!", icon="✅")
 
-    # New section to display Fruityvice nutrition information for selected fruits
-    st.write("### Fruityvice Nutrition Information for Selected Fruits")
-
-    fruityvice_data = []
-    for fruit in ingredients_list:
-        response = requests.get(f"https://fruityvice.com/api/fruit/{fruit.lower()}")
-        if response.status_code == 200:
-            fruityvice_data.append(response.json())
-        else:
-            st.error(f"Failed to fetch data for {fruit}: {response.status_code}")
-
-    if fruityvice_data:
-     
-        # Display the data as a dataframe
-        import pandas as pd
-        fv_df = pd.json_normalize(fruityvice_data)
-        st.dataframe(data=fv_df, use_container_width=True)
+# New section to display Fruityvice nutrition information
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+if fruityvice_response.status_code == 200:
+    fruityvice_data = fruityvice_response.json()
+    st.json(fruityvice_data)
+else:
+    st.error(f"Failed to fetch data: {fruityvice_response.status_code}")
